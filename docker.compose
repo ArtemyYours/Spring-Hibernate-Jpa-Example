@@ -1,0 +1,14 @@
+mydb:
+  container_name: postgres_container
+  image: postgres
+  environment:
+    POSTGRES_USER: admin
+    POSTGRES_PASSWORD: 123123
+    DB_NAME: SampleDB
+    PGDATA: /data/postgres
+  volumes:
+    - postgres:/data/postgres
+  ports:
+    - "5432:5432"
+  restart: unless-stopped
+
