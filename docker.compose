@@ -9,6 +9,6 @@ mydb:
   volumes:
     - postgres:/data/postgres
   ports:
-    - "5432:5432"
+    - "5433:5433"
   restart: unless-stopped
 
