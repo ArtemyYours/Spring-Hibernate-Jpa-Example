@@ -4,6 +4,7 @@ import com.artkop.DTO.TeacherToStudentDTO;
 import com.artkop.configuration.RabbitMq.RabbitMQSettings;
 import com.artkop.model.Message;
 import com.artkop.service.TeacherToStudentService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class StudentToTeacherRelationController {
     RabbitTemplate rabbitTemplate;
     RabbitMQSettings rabbitMQSettings;
 
+    @ApiOperation(value = "Add new Teacher to Student relation")
     @PostMapping("/addStudentToTeacher/{teacherId})/{StudentId})")
     public void newTeachertoStudent(@PathVariable long teacherId, @PathVariable long studentId){
         Message message = new Message();
@@ -26,8 +28,9 @@ public class StudentToTeacherRelationController {
         service.addStudentToTeacher(teacherToStudentDTO);
     }
 
-    @PostMapping("/removeStudentFromTeacher/{teacherId})/{StudentId})")
-    public void ndeleteStudentFromTeacher(@PathVariable long teacherId, @PathVariable long studentId){
+    @ApiOperation(value = "Delete Teacher to Student relation")
+    @DeleteMapping("/removeStudentFromTeacher/{teacherId})/{StudentId})")
+    public void deleteStudentFromTeacher(@PathVariable long teacherId, @PathVariable long studentId){
 
         Message message = new Message();
         message.setMessage("Teacher-ToStudent relation has been deleted");

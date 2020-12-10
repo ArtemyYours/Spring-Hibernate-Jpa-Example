@@ -7,6 +7,7 @@ import com.artkop.model.Student;
 import com.artkop.model.Teacher;
 import com.artkop.service.StudentService;
 import com.artkop.service.TeacherToStudentService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class StudentController {
     RabbitTemplate rabbitTemplate;
     RabbitMQSettings rabbitMQSettings;
 
+    @ApiOperation(value = "View list of all students")
     @GetMapping("/getAll")
     @ResponseBody
     public List<Student> getAll(){
@@ -33,6 +35,7 @@ public class StudentController {
         return service.getAll();
     }
 
+    @ApiOperation(value = "View list of all teachers, who work with input student")
     @GetMapping("/getTeachersForStudent/{id}")
     @ResponseBody
     public List<Teacher> getTeachersForStudent(@PathVariable long id){
@@ -43,8 +46,9 @@ public class StudentController {
         return teacherToStudentService.getTeachersForStudent(id);
     }
 
+    @ApiOperation(value = "Create new student")
     @PostMapping("/create")
-    public void newTeacher(@RequestBody StudentDTO studentDTO){
+    public void newStudent(@RequestBody StudentDTO studentDTO){
 
         Message message = new Message();
         message.setMessage("Student has been created");
@@ -53,6 +57,7 @@ public class StudentController {
         service.save(studentDTO);
     }
 
+    @ApiOperation(value = "Delete student with input idt")
     @DeleteMapping("/deleteStudentr")
     public void deleteTeacher(@RequestBody Long id){
         Message message = new Message();
@@ -62,6 +67,7 @@ public class StudentController {
         service.delete(id);
     }
 
+    @ApiOperation(value = "update student fields")
     @PutMapping (value = "/updateStudent/{id})")
     public void updateTeacher(@PathVariable long id, @RequestBody StudentDTO studentDTO){
 
