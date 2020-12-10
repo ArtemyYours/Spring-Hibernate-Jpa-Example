@@ -1,6 +1,6 @@
 # Spring-Hibernate-Jpa-Example
 
-**All tasks including "bonus tasks" performed. RabbitMQ was used instead of ActiveMQ, because i'm more familiar with it.**
+**All tasks including "bonus tasks" are performed. RabbitMQ was used instead of ActiveMQ, because i'm more familiar with it.**
 
 Please, use **docker.compose** for postgresql and rabbitmq local instances creation, before testing the app.
 
