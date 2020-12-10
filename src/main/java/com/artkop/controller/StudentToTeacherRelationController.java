@@ -9,7 +9,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/rest/relation")
+@RequestMapping(value = "/advancedaccess/relation")
 @AllArgsConstructor
 public class StudentToTeacherRelationController {
     TeacherToStudentService service;

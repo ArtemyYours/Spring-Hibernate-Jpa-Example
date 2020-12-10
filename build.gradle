@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.4.0', ext: 'pom'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.4.0'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
@@ -29,6 +30,8 @@ dependencies {
     compile group: 'com.rabbitmq', name: 'http-client', version: '3.7.0.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.2'
+
 
 
 

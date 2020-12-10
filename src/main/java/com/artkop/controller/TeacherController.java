@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/rest/teachers")
+@RequestMapping(value = "/simplaccess/teachers")
 @AllArgsConstructor
 @Slf4j
 public class TeacherController {
