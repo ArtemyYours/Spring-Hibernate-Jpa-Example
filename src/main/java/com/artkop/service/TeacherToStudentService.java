@@ -23,8 +23,8 @@ public class TeacherToStudentService {
 
     public void addStudentToTeacher(TeacherToStudentDTO teacherToStudentDTO){
         TeacherToStudent teacherToStudent = new TeacherToStudent();
-        teacherToStudent.setStudentId(teacherToStudentDTO.getStudentId());
-        teacherToStudent.setTeacherId(teacherToStudentDTO.getTeacherId());
+        teacherToStudent.setStudent(studentRepository.getOne(teacherToStudentDTO.getStudentId()));
+        teacherToStudent.setTeacher(teacherRepository.getOne(teacherToStudentDTO.getTeacherId()));
         repository.save(teacherToStudent);
     }
 
@@ -39,7 +39,7 @@ public class TeacherToStudentService {
         for (TeacherToStudent tts:
                 repository.getAllByTeacherId(id)) {
 
-        students.add(studentRepository.getOne(tts.getStudentId()));
+        students.add(tts.getStudent());
         }
     return students;
     }
@@ -49,7 +49,7 @@ public class TeacherToStudentService {
         for (TeacherToStudent tts:
                 repository.getAllByStudentId(id)) {
 
-        teachers.add(teacherRepository.getOne(tts.getTeacherId()));
+        teachers.add(tts.getTeacher());
         }
     return teachers;
     }

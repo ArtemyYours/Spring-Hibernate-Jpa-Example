@@ -8,6 +8,7 @@ import com.artkop.model.Teacher;
 import com.artkop.service.TeacherService;
 import com.artkop.service.TeacherToStudentService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/rest/teachers")
 @AllArgsConstructor
+@Slf4j
 public class TeacherController {
 
     TeacherService service;
@@ -30,7 +32,9 @@ public class TeacherController {
         message.setMessage("Teachers get all method has been called");
         rabbitTemplate
                 .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
-        return service.getAll();
+        List<Teacher> teachers = service.getAll();
+        log.info(teachers.toString());
+        return teachers;
     }
 
     @GetMapping("/getStudentsForTeacher/{id}")

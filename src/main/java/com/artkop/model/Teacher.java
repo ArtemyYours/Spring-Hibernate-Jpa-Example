@@ -1,11 +1,13 @@
 package com.artkop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,6 +28,10 @@ public class Teacher {
     @ManyToOne
     @JoinColumn(name="department_id", nullable=false)
     private Department department;
+
+    @OneToMany(mappedBy="teacher")
+    @JsonIgnore
+    private List<TeacherToStudent> teacherToStudents;
 
 
 }
