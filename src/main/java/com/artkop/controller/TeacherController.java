@@ -1,8 +1,11 @@
 package com.artkop.controller;
 
 import com.artkop.DTO.TeacherDTO;
+import com.artkop.model.Student;
 import com.artkop.model.Teacher;
+import com.artkop.model.TeacherToStudent;
 import com.artkop.service.TeacherService;
+import com.artkop.service.TeacherToStudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +18,18 @@ import java.util.List;
 public class TeacherController {
 
     TeacherService service;
+    TeacherToStudentService teacherToStudentService;
 
     @GetMapping("/getAll")
     @ResponseBody
     public List<Teacher> getAll(){
         return service.getAll();
+    }
+
+    @GetMapping("/getStudentsForTeacher/{id}")
+    @ResponseBody
+    public List<Student> getStudentsForTeacher(@PathVariable long id){
+        return teacherToStudentService.getStudentsForTeacher(id);
     }
 
     @PostMapping("/create")
