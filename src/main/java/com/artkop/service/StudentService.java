@@ -16,7 +16,6 @@ public class StudentService {
     private SpecializationRepo specializationRepo;
 
     public void save(StudentDTO student){
-
         repository.save(createStudent(student));
     }
 

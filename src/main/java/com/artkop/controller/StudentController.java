@@ -30,14 +30,13 @@ public class StudentController {
         service.save(studentDTO);
     }
 
-    @DeleteMapping("/deleteTeacher")
+    @DeleteMapping("/deleteStudentr")
     public void deleteTeacher(@RequestBody Long id){
         service.delete(id);
     }
 
-    @PutMapping (value = "/updateTeacher")
-    public void updateTeacher(@RequestBody Long id, @RequestBody StudentDTO studentDTO){
-
+    @PutMapping (value = "/updateStudent/{id})")
+    public void updateTeacher(@PathVariable long id, @RequestBody StudentDTO studentDTO){
         service.update(id, studentDTO);
     }
 }

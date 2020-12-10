@@ -24,18 +24,16 @@ public class TeacherController {
 
     @PostMapping("/create")
     public void newTeacher(@RequestBody TeacherDTO teacher){
-        System.out.println(teacher);
         service.save(teacher);
     }
 
-    @DeleteMapping("/deleteStudent")
+    @DeleteMapping("/deleteTeacher")
     public void deleteTeacher(@RequestBody Long id){
         service.delete(id);
     }
 
-    @PutMapping (value = "/updateStudent")
-    public void updateTeacher(@RequestBody Long id, @RequestBody TeacherDTO teacher){
-
+    @PutMapping (value = "/updateTeacher/{id}")
+    public void updateTeacher(@PathVariable long id, @RequestBody TeacherDTO teacher){
         service.update(id, teacher);
     }
 }
