@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping(value = "/students")
+@RestController
+@RequestMapping(value = "/rest/students")
 @AllArgsConstructor
 public class StudentController {
 

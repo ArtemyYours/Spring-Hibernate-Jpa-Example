@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping(value = "/teachers")
+@RestController
+@RequestMapping(value = "/rest/teachers")
 @AllArgsConstructor
 public class TeacherController {
 
@@ -28,12 +28,12 @@ public class TeacherController {
         service.save(teacher);
     }
 
-    @DeleteMapping("/deleteTeacher")
+    @DeleteMapping("/deleteStudent")
     public void deleteTeacher(@RequestBody Long id){
         service.delete(id);
     }
 
-    @PutMapping (value = "/updateTeacher")
+    @PutMapping (value = "/updateStudent")
     public void updateTeacher(@RequestBody Long id, @RequestBody TeacherDTO teacher){
 
         service.update(id, teacher);
