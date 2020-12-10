@@ -1,8 +1,7 @@
 package com.artkop.controller;
 
-import com.artkop.DTO.TeacherDTO;
 import com.artkop.DTO.TeacherToStudentDTO;
-import com.artkop.configuration.settings.RabbitMQSettings;
+import com.artkop.configuration.RabbitMq.RabbitMQSettings;
 import com.artkop.model.Message;
 import com.artkop.service.TeacherToStudentService;
 import lombok.AllArgsConstructor;

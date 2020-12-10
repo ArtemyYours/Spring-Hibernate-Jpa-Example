@@ -1,18 +1,14 @@
 package com.artkop.controller;
 
 import com.artkop.DTO.StudentDTO;
-import com.artkop.DTO.TeacherDTO;
-import com.artkop.configuration.RabbitMQConfig;
-import com.artkop.configuration.settings.RabbitMQSettings;
+import com.artkop.configuration.RabbitMq.RabbitMQSettings;
 import com.artkop.model.Message;
 import com.artkop.model.Student;
 import com.artkop.model.Teacher;
 import com.artkop.service.StudentService;
-import com.artkop.service.TeacherService;
 import com.artkop.service.TeacherToStudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

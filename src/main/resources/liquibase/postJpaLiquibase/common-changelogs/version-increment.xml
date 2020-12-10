@@ -7,5 +7,6 @@
     <include file="20201210_02_kopylov.xml" relativeToChangelogFile="true"/>
     <include file="20201210_03_kopylov.xml" relativeToChangelogFile="true"/>
     <include file="20201210_04_kopylov.xml" relativeToChangelogFile="true"/>
+    <include file="20201210_05_kopylov.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
