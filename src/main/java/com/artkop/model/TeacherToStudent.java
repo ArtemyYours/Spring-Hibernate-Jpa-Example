@@ -11,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(name = "TeacherToStudent_UQ", columnNames={"teacher_id", "student_id"})})
 public class TeacherToStudent {
 
     @Id

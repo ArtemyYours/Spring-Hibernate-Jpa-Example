@@ -3,3 +3,17 @@ liquibase:
     enabled: true
     change-log: classpath:liquibase/post-jpa.xml
     contexts: common
+rebbit:
+  request-concurrency: 1
+spring:
+  rabbitmq:
+    host: localhost
+    port: 15672
+    http-host: localhost
+    http-protocol: https
+    http-port:
+    username: admin
+    password: 123123
+    queue: errors.queue
+    exchange: errors.echange
+    routing-key: errors-r-t

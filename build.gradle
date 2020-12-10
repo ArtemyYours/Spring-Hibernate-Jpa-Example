@@ -26,6 +26,10 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     compile group: 'org.liquibase', name: 'liquibase-core', version: '4.2.1'
+    compile group: 'com.rabbitmq', name: 'http-client', version: '3.7.0.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+
 
 
 
