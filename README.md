@@ -1,5 +1,7 @@
 # Spring-Hibernate-Jpa-Example
 
+**All tasks including "bonus tasks" performed. RabbitMQ was used instead of ActiveMQ, because i'm more familiar with it.**
+
 Please, use **docker.compose** for postgresql and rabbitmq local instances creation, before testing the app.
 
 You can find **swagger** thru link -> http://localhost:8088/swagger-ui.htm
@@ -10,8 +12,9 @@ RabbitMQ is used for sending messages, shen one of the methods in API is called.
 
 **PLEASE, BE AWARE:**
 **1)** There are two roles - USER(user, password) and ADMIN(admin, password).
-Only two API controllers avaliable for USER role - StudentController and TeacherController
+Only two API controllers avaliable for USER role - StudentController and TeacherController.
 All three are avaliable for admin - StudentController, TeacherController and StudentToTeacherRelationController
 
 **2)** Before launching SpringHibernateJpaRawApplication (which is SpringBootApp), start gRPC server GrpcServer.
-Also, pay attention to that fact, that the messages received by gRPC server will be reflected in gRPC log.  
+
+**3)** Also, pay attention to that fact, that the messages received by gRPC server will be reflected in gRPC log.  
