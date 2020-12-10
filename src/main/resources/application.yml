@@ -1,0 +1,5 @@
+liquibase:
+  post-jpa-liquibase:
+    enabled: true
+    change-log: classpath:liquibase/post-jpa.xml
+    contexts: common

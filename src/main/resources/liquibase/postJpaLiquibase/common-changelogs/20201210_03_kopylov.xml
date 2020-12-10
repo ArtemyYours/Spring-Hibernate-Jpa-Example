@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20201210_03_kopylov" author="kopylov" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult = "0">
+                SELECT count(*) FROM public.student
+            </sqlCheck>
+        </preConditions>
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Артем', 'Артемовов', 1, 'Артемович', 1);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Василий', 'Васильев', 2, 'Васильевич', 2);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Сергей', 'Сергеев', 3, 'Сергеевич', 3);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Петр', 'Петров', 4, 'Петрович', 4);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Алексей', 'Алексеев', 1, 'Алексеевич', 5);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Владимир', 'Владимиров', 2, 'Владимирович', 6);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Игорь', 'Игорев', 3, 'Игоревич', 7);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Семен', 'Семенов', 4, 'Семенович', 8);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ('Олег', 'Олегов', 1, 'Олегович', 1);
+            INSERT INTO public.student (first_name, last_name, level, patronymic_name, specialization_id) VALUES ( 'Егор', 'Егоров', 2, 'Егорович', 2);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

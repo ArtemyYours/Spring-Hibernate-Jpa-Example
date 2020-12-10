@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20201210_01_kopylov" author="kopylov" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult = "0">
+                SELECT count(*) FROM public.department;
+            </sqlCheck>
+        </preConditions>
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO public.department (name) VALUES ( 'Первый департамент');
+            INSERT INTO public.department (name) VALUES ( 'Второй департамент');
+            INSERT INTO public.department (name) VALUES ( 'Третий департамент');
+            INSERT INTO public.department (name) VALUES ( 'Четвертый департамент');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

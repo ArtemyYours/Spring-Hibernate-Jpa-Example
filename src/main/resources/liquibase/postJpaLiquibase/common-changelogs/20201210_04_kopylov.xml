@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20201210_04_kopylov" author="kopylov" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult = "0">
+                SELECT count(*) FROM public.teacher;
+            </sqlCheck>
+        </preConditions>
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO public.teacher (first_name, last_name, patronymic_name, department_id) VALUES ('Максим', 'Максимов', 'Максимович', 1);
+            INSERT INTO public.teacher (first_name, last_name, patronymic_name, department_id) VALUES ('Степан', 'Степанов', 'Степанович', 2);
+            INSERT INTO public.teacher (first_name, last_name, patronymic_name, department_id) VALUES ('Роман', 'Романов', 'Романович', 3);
+            INSERT INTO public.teacher (first_name, last_name, patronymic_name, department_id) VALUES ('Анастасия', 'Анастасиева', 'Анастасиевна', 4);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

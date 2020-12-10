@@ -1,0 +1,24 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20201210_02_kopylov" author="kopylov" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult = "0">
+                SELECT count(*) FROM public.specialization;
+            </sqlCheck>
+        </preConditions>
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO public.specialization (name, department_id) VALUES ('Первая специализация', 1);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Вторая специализация', 1);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Третья специализация', 2);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Четвертая специализация', 2);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Пятая специализация', 3);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Шестая специализация', 3);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Седьямая специализация', 4);
+            INSERT INTO public.specialization (name, department_id) VALUES ('Восьмая специализация', 4);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
