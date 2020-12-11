@@ -5,6 +5,7 @@ import com.artkop.configuration.RabbitMq.RabbitMQSettings;
 import com.artkop.model.Message;
 import com.artkop.model.Student;
 import com.artkop.model.Teacher;
+import com.artkop.service.RabbitSenderService;
 import com.artkop.service.StudentService;
 import com.artkop.service.TeacherToStudentService;
 import io.swagger.annotations.ApiOperation;
@@ -21,17 +22,13 @@ public class StudentController {
 
     StudentService service;
     TeacherToStudentService teacherToStudentService;
-    RabbitTemplate rabbitTemplate;
-    RabbitMQSettings rabbitMQSettings;
+    RabbitSenderService sender;
 
     @ApiOperation(value = "View list of all students")
     @GetMapping("/getAll")
     @ResponseBody
     public List<Student> getAll(){
-        Message message = new Message();
-        message.setMessage("Students get all method got called");
-        rabbitTemplate
-                .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
+        sender.sendMessageToRabbit("Students get all method got called");
         return service.getAll();
     }
 
@@ -39,42 +36,28 @@ public class StudentController {
     @GetMapping("/getTeachersForStudent/{id}")
     @ResponseBody
     public List<Teacher> getTeachersForStudent(@PathVariable long id){
-        Message message = new Message();
-        message.setMessage("Students get Teachers  method got called");
-        rabbitTemplate
-                .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
+        sender.sendMessageToRabbit("Students get Teachers  method got called");
         return teacherToStudentService.getTeachersForStudent(id);
     }
 
     @ApiOperation(value = "Create new student")
     @PostMapping("/create")
     public void newStudent(@RequestBody StudentDTO studentDTO){
-
-        Message message = new Message();
-        message.setMessage("Student has been created");
-        rabbitTemplate
-                .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
+        sender.sendMessageToRabbit("Student has been created");
         service.save(studentDTO);
     }
 
     @ApiOperation(value = "Delete student with input idt")
     @DeleteMapping("/deleteStudentr")
     public void deleteTeacher(@RequestBody Long id){
-        Message message = new Message();
-        message.setMessage("Student has been deleted");
-        rabbitTemplate
-                .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
+        sender.sendMessageToRabbit("Student has been deleted");
         service.delete(id);
     }
 
     @ApiOperation(value = "update student fields")
     @PutMapping (value = "/updateStudent/{id})")
     public void updateTeacher(@PathVariable long id, @RequestBody StudentDTO studentDTO){
-
-        Message message = new Message();
-        message.setMessage("Student has been edited");
-        rabbitTemplate
-                .convertAndSend(rabbitMQSettings.getExchange(), rabbitMQSettings.getRoutingKey(), message);
+        sender.sendMessageToRabbit("Student has been edited");
         service.update(id, studentDTO);
     }
 }
