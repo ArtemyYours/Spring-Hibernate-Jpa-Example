@@ -34,8 +34,7 @@ public class SpringFoxConfig {
                 "Student-to-Teacher REST API",
                 "This API consist of three controllers. Student controller (CRUD operations + get al Teachers, who work with this student), " +
                         "Teacher controller((CRUD operations + get al Students, who work with this teacher)), " +
-                        "Student-to-teacher-relation-controller(add aor delete relation student-teacher)\n " +
-                        "PLEASE, BE AWARE: There are two roles - USER(user, password) and ADMIN(admin, password). Only two API controllers avaliable for USER role - StudentController and TeacherController. All three are avaliable for admin - StudentController, TeacherController and StudentToTeacherRelationController",
+                        "Student-to-teacher-relation-controller(add aor delete relation student-teacher)\n ",
                 "0.99",
                 "Terms of service",
                 new Contact("Artem Kopilov", "https://github.com/ArtemyYours", "artemykopilov@gmail.com"),

@@ -18,11 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/*").access("hasRole('USER')")
-                .antMatchers("/advancedaccess*").hasRole("ADMIN")
-                .and()
 
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/**").hasRole("USER")
+                .and()
                 .formLogin();
     }
 

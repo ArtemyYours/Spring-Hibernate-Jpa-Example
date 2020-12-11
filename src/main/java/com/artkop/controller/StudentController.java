@@ -8,7 +8,9 @@ import com.artkop.model.Teacher;
 import com.artkop.service.RabbitSenderService;
 import com.artkop.service.StudentService;
 import com.artkop.service.TeacherToStudentService;
+import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiOperation;
+import liquibase.pro.packaged.S;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/simplaccess/students")
+@RequestMapping(value = "/simpleaccess/students")
 @AllArgsConstructor
 public class StudentController {
 
@@ -49,14 +51,28 @@ public class StudentController {
 
     @ApiOperation(value = "Delete student with input idt")
     @DeleteMapping("/deleteStudentr")
-    public void deleteTeacher(@RequestBody Long id){
+    public void deleteStudent(@RequestBody Long id){
         sender.sendMessageToRabbit("Student has been deleted");
         service.delete(id);
     }
 
     @ApiOperation(value = "update student fields")
     @PutMapping (value = "/updateStudent/{id})")
-    public void updateTeacher(@PathVariable long id, @RequestBody StudentDTO studentDTO){
+    public void updateStudent(@PathVariable @NotNull long id,
+                              @RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String lastName,
+                              @RequestParam(required = false) String patronymicName,
+                              @RequestParam(required = false) Long specializationId,
+                              @RequestParam(required = false) Integer level
+                              ){
+        StudentDTO studentDTO = new StudentDTO();
+
+        studentDTO.setFirstName(firstName);
+        studentDTO.setLastName(lastName);
+        studentDTO.setPatronymicName(patronymicName);
+        studentDTO.setSpecialization(specializationId);
+        studentDTO.setLevel(level);
+
         sender.sendMessageToRabbit("Student has been edited");
         service.update(id, studentDTO);
     }

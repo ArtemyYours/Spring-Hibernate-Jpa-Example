@@ -11,10 +11,6 @@ RabbitMQ is used for sending messages, when one of the methods in API is called.
  in log and also send them to the **gRPC**, which also publush them in log(in gRPC server log).
 
 **PLEASE, BE AWARE:**
-**1)** There are two roles - USER(user, password) and ADMIN(admin, password).
-Only two API controllers avaliable for USER role - StudentController and TeacherController.
-All three are avaliable for admin - StudentController, TeacherController and StudentToTeacherRelationController
+**1)** Before launching SpringHibernateJpaRawApplication (which is SpringBootApp), start gRPC server GrpcServer.
 
-**2)** Before launching SpringHibernateJpaRawApplication (which is SpringBootApp), start gRPC server GrpcServer.
-
-**3)** Also, pay attention to that fact, that the messages received by gRPC server will be reflected **only** in gRPC log.  
+**2)** Also, pay attention to that fact, that the messages received by gRPC server will be reflected **only** in gRPC log.  
