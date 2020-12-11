@@ -21,6 +21,4 @@ public class RabbitMQSettings {
     private String queue;
     private String exchange;
     private String routingKey;
-
-
 }

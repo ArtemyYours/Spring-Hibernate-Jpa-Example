@@ -93,9 +93,4 @@ public class RabbitMQConfig {
     public Binding binding1() {
         return BindingBuilder.bind(queue()).to(exchange()).with(settings.getRoutingKey());
     }
-
-
-
-
-
 }
