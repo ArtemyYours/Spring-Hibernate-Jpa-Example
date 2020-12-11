@@ -46,9 +46,17 @@ public class TeacherController {
 
     @ApiOperation(value = "Create new teacher")
     @PostMapping("/create")
-    public void newTeacher(@RequestBody TeacherDTO teacher){
+    public void newTeacher(@RequestParam(required = false) String firstName,
+                           @RequestParam(required = false) String lastName,
+                           @RequestParam(required = false) String patronymicName,
+                           @RequestParam(required = false) Long department){
+        TeacherDTO teacherDTO = new TeacherDTO();
+        teacherDTO.setFirstName(firstName);
+        teacherDTO.setLastName(lastName);
+        teacherDTO.setPatronymicName(patronymicName);
+        teacherDTO.setDepartment(department);
         sender.sendMessageToRabbit("Teacher has been created");
-        service.save(teacher);
+        service.save(teacherDTO);
     }
 
     @ApiOperation(value = "Delete teacher with input id")
@@ -60,7 +68,7 @@ public class TeacherController {
 
     @ApiOperation(value = "Update teacher parameters")
     @PutMapping (value = "/updateTeacher/{id}")
-    public void updateTeacher(@PathVariable long id,
+    public void updateTeacher(@RequestParam long id,
                               @RequestParam(required = false) String firstName,
                               @RequestParam(required = false) String lastName,
                               @RequestParam(required = false) String patronymicName,

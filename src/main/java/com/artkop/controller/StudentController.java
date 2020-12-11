@@ -44,7 +44,20 @@ public class StudentController {
 
     @ApiOperation(value = "Create new student")
     @PostMapping("/create")
-    public void newStudent(@RequestBody StudentDTO studentDTO){
+    public void newStudent(@RequestParam String firstName,
+                           @RequestParam String lastName,
+                           @RequestParam String patronymicName,
+                           @RequestParam Long specializationId,
+                           @RequestParam Integer level
+    ){
+        StudentDTO studentDTO = new StudentDTO();
+
+        studentDTO.setFirstName(firstName);
+        studentDTO.setLastName(lastName);
+        studentDTO.setPatronymicName(patronymicName);
+        studentDTO.setSpecialization(specializationId);
+        studentDTO.setLevel(level);
+
         sender.sendMessageToRabbit("Student has been created");
         service.save(studentDTO);
     }
@@ -58,7 +71,7 @@ public class StudentController {
 
     @ApiOperation(value = "update student fields")
     @PutMapping (value = "/updateStudent/{id})")
-    public void updateStudent(@PathVariable @NotNull long id,
+    public void updateStudent(@RequestParam @NotNull long id,
                               @RequestParam(required = false) String firstName,
                               @RequestParam(required = false) String lastName,
                               @RequestParam(required = false) String patronymicName,
